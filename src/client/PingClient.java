@@ -1,15 +1,11 @@
 package client;
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.Properties;
 
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
-import server.PingSessionBeanRemote;
+import server.Ping;
 
 public class PingClient {
 	private InitialContext ctx;
@@ -27,7 +23,7 @@ public class PingClient {
 	}
 
 	private void testPing() throws NamingException {
-		PingSegssionBeanRemote proxy = (PingSessionBeanRemote) ctx.lookup("java:global/example/example/PingEJB"); 
-		System.out.println(proxy.ping("Ping!"));
+		Ping ping = (Ping) ctx.lookup("java:global/example/example/PingEJB"); 
+		System.out.println(ping.ping("Ping!"));
 	}
 }
